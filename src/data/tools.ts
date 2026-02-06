@@ -6,6 +6,14 @@ export const tools = [
     category: "文档",
     tags: ["合同", "法务", "AI"],
     apiType: "REST",
+    pricingType: "free",
+    price: 0,
+    billingUnit: "次",
+    quotaLimit: "每日 50 次",
+    api: {
+      type: "rest",
+      endpoint: "https://api.example.com/contract/analyze",
+    },
   },
   {
     id: "sentiment-radar",
@@ -14,6 +22,14 @@ export const tools = [
     category: "信息流",
     tags: ["舆情", "趋势", "摘要"],
     apiType: "WebSocket",
+    pricingType: "free",
+    price: 0,
+    billingUnit: "次",
+    quotaLimit: "每分钟 30 次",
+    api: {
+      type: "ws",
+      endpoint: "wss://api.example.com/sentiment/stream",
+    },
   },
   {
     id: "content-struct",
@@ -22,6 +38,14 @@ export const tools = [
     category: "内容",
     tags: ["结构化", "清单", "效率"],
     apiType: "SSE",
+    pricingType: "paid",
+    price: 9.9,
+    billingUnit: "月",
+    quotaLimit: "每月 200 次",
+    api: {
+      type: "sse",
+      endpoint: "https://api.example.com/content/stream",
+    },
   },
 ];
 

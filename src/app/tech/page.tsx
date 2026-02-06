@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { techPosts, techSeries } from "@/data/tech";
+import AdSlot from "@/components/AdSlot";
+import TechListClient from "@/components/TechListClient";
+import { techSeries } from "@/data/tech";
 
 export const metadata = {
   title: "技术博客 · 老吴的工作站",
@@ -18,7 +20,9 @@ export default function TechPage() {
               技术博客
             </Link>
             <Link href="/tech/series">系列聚合</Link>
+            <Link href="/personal">个人博客</Link>
             <Link href="/tools">AI 工具</Link>
+            <Link href="/about">关于</Link>
           </nav>
         </div>
       </header>
@@ -54,32 +58,11 @@ export default function TechPage() {
           </div>
         </section>
 
-        <section className="mt-10 grid gap-6 lg:grid-cols-3">
-          {techPosts.map((post) => (
-            <article
-              key={post.slug}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6"
-            >
-              <p className="text-xs uppercase tracking-[0.3em] text-white/70">
-                {post.category}
-              </p>
-              <h3 className="mt-3 text-lg font-semibold">{post.title}</h3>
-              <p className="mt-3 text-sm text-white/85">{post.summary}</p>
-              <div className="mt-4 flex flex-wrap gap-2 text-xs text-white/50">
-                {post.tags.map((tag) => (
-                  <span key={tag} className="rounded-full bg-white/10 px-2 py-1">
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-              <Link
-                href={`/tech/${post.slug}`}
-                className="mt-6 inline-flex text-sm font-semibold text-emerald-300"
-              >
-                阅读详情 →
-              </Link>
-            </article>
-          ))}
+        <section className="mt-10">
+          <AdSlot label="广告位 A（顶部横幅 · 6:1）" ratio="6/1" />
+          <div className="mt-8">
+            <TechListClient />
+          </div>
         </section>
       </main>
     </div>

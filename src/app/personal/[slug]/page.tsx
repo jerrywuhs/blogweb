@@ -15,8 +15,22 @@ export default async function PersonalDetail({ params }: PageProps) {
   const post = getPersonalPost(slug);
   if (!post) return notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    articleSection: post.category,
+    keywords: post.tags.join(","),
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
         <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-5">
           <Link href="/personal" className="text-sm text-white/70">

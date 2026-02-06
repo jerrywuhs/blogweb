@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { tools } from "@/data/tools";
+import AdSlot from "@/components/AdSlot";
+import ToolsListClient from "@/components/ToolsListClient";
 
 export const metadata = {
   title: "AI 工具 · 老吴的工作站",
@@ -19,6 +20,7 @@ export default function ToolsPage() {
             </Link>
             <Link href="/tech">技术博客</Link>
             <Link href="/personal">个人博客</Link>
+            <Link href="/about">关于</Link>
           </nav>
         </div>
       </header>
@@ -34,50 +36,11 @@ export default function ToolsPage() {
               提供可演示的 AI 能力入口，支持 REST / WebSocket / SSE。
             </p>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-            <h2 className="text-sm font-semibold text-white/70">工具筛选（预留）</h2>
-            <div className="mt-4 space-y-3 text-xs text-white/60">
-              <p>· 分类筛选</p>
-              <p>· 标签筛选</p>
-              <p>· 价格/状态</p>
-              <p>· 搜索与排序</p>
-            </div>
-          </div>
+          <AdSlot label="广告位 A（顶部横幅 · 6:1）" ratio="6/1" />
         </section>
 
-        <section className="mt-10 grid gap-6 lg:grid-cols-3">
-          {tools.map((tool) => (
-            <article
-              key={tool.id}
-              className="rounded-3xl border border-white/10 bg-white/5 p-6"
-            >
-              <div className="flex items-start justify-between">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/70">
-                    {tool.category}
-                  </p>
-                  <h3 className="mt-3 text-lg font-semibold">{tool.name}</h3>
-                </div>
-                <span className="rounded-full border border-white/20 px-3 py-1 text-xs text-white/70">
-                  {tool.apiType}
-                </span>
-              </div>
-              <p className="mt-3 text-sm text-white/85">{tool.summary}</p>
-              <div className="mt-4 flex flex-wrap gap-2 text-xs text-white/50">
-                {tool.tags.map((tag) => (
-                  <span key={tag} className="rounded-full bg-white/10 px-2 py-1">
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-              <Link
-                href={`/tools/${tool.id}`}
-                className="mt-6 inline-flex text-sm font-semibold text-emerald-300"
-              >
-                进入工具 →
-              </Link>
-            </article>
-          ))}
+        <section className="mt-10">
+          <ToolsListClient />
         </section>
       </main>
     </div>

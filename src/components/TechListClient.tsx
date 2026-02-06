@@ -1,0 +1,155 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Link from "next/link";
+import AdSlot from "@/components/AdSlot";
+import { techPosts, techSeries } from "@/data/tech";
+
+const categories = Array.from(new Set(techPosts.map((post) => post.category)));
+const tags = Array.from(new Set(techPosts.flatMap((post) => post.tags)));
+const types = Array.from(new Set(techPosts.map((post) => post.type)));
+const series = techSeries.map((item) => item.title);
+
+export default function TechListClient() {
+  const [category, setCategory] = useState("全部");
+  const [tag, setTag] = useState("全部");
+  const [type, setType] = useState("全部");
+  const [seriesTitle, setSeriesTitle] = useState("全部");
+  const [sort, setSort] = useState("最新");
+  const [layout, setLayout] = useState<"grid" | "list">("grid");
+
+  const filtered = useMemo(() => {
+    let data = [...techPosts];
+    if (category !== "全部") data = data.filter((post) => post.category === category);
+    if (tag !== "全部") data = data.filter((post) => post.tags.includes(tag));
+    if (type !== "全部") data = data.filter((post) => post.type === type);
+    if (seriesTitle !== "全部")
+      data = data.filter((post) => post.seriesTitle === seriesTitle);
+
+    data.sort((a, b) =>
+      sort === "最新"
+        ? new Date(b.date).getTime() - new Date(a.date).getTime()
+        : new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
+    return data;
+  }, [category, tag, type, seriesTitle, sort]);
+
+  return (
+    <div className="space-y-8">
+      <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <div className="flex flex-wrap items-center gap-3 text-xs text-white/70">
+          <select
+            className="rounded-full border border-white/20 bg-transparent px-3 py-1"
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+          >
+            <option>全部</option>
+            {categories.map((item) => (
+              <option key={item}>{item}</option>
+            ))}
+          </select>
+          <select
+            className="rounded-full border border-white/20 bg-transparent px-3 py-1"
+            value={tag}
+            onChange={(event) => setTag(event.target.value)}
+          >
+            <option>全部</option>
+            {tags.map((item) => (
+              <option key={item}>{item}</option>
+            ))}
+          </select>
+          <select
+            className="rounded-full border border-white/20 bg-transparent px-3 py-1"
+            value={type}
+            onChange={(event) => setType(event.target.value)}
+          >
+            <option>全部</option>
+            {types.map((item) => (
+              <option key={item}>{item}</option>
+            ))}
+          </select>
+          <select
+            className="rounded-full border border-white/20 bg-transparent px-3 py-1"
+            value={seriesTitle}
+            onChange={(event) => setSeriesTitle(event.target.value)}
+          >
+            <option>全部</option>
+            {series.map((item) => (
+              <option key={item}>{item}</option>
+            ))}
+          </select>
+          <div className="ml-auto flex items-center gap-3">
+            <button
+              className={`rounded-full border px-3 py-1 ${
+                sort === "最新" ? "border-white/60" : "border-white/20"
+              }`}
+              onClick={() => setSort("最新")}
+            >
+              最新
+            </button>
+            <button
+              className={`rounded-full border px-3 py-1 ${
+                sort === "最早" ? "border-white/60" : "border-white/20"
+              }`}
+              onClick={() => setSort("最早")}
+            >
+              最早
+            </button>
+            <button
+              className={`rounded-full border px-3 py-1 ${
+                layout === "grid" ? "border-white/60" : "border-white/20"
+              }`}
+              onClick={() => setLayout("grid")}
+            >
+              卡片
+            </button>
+            <button
+              className={`rounded-full border px-3 py-1 ${
+                layout === "list" ? "border-white/60" : "border-white/20"
+              }`}
+              onClick={() => setLayout("list")}
+            >
+              列表
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={
+          layout === "grid"
+            ? "grid gap-6 lg:grid-cols-3"
+            : "space-y-4"
+        }
+      >
+        {filtered.map((post) => (
+          <article
+            key={post.slug}
+            className="rounded-3xl border border-white/10 bg-white/5 p-6"
+          >
+            <p className="text-xs uppercase tracking-[0.3em] text-white/70">
+              {post.category}
+            </p>
+            <h3 className="mt-3 text-lg font-semibold">{post.title}</h3>
+            <p className="mt-2 text-sm text-white/85">{post.summary}</p>
+            <div className="mt-4 flex flex-wrap gap-2 text-xs text-white/50">
+              {post.tags.map((item) => (
+                <span key={item} className="rounded-full bg-white/10 px-2 py-1">
+                  #{item}
+                </span>
+              ))}
+            </div>
+            <Link
+              href={`/tech/${post.slug}`}
+              className="mt-6 inline-flex text-sm font-semibold text-emerald-300"
+            >
+              阅读详情 →
+            </Link>
+          </article>
+        ))}
+      </div>
+
+      <AdSlot label="广告位 B（信息流插入 · 4:3）" ratio="4/3" />
+    </div>
+  );
+}

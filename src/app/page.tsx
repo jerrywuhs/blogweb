@@ -69,17 +69,20 @@ export default function Home() {
             <Link href="#home" className="hover:text-white">
               首页
             </Link>
-            <Link href="#tech" className="hover:text-white">
+            <Link href="/tech" className="hover:text-white">
               技术博客
             </Link>
-            <Link href="#life" className="hover:text-white">
+            <Link href="/personal" className="hover:text-white">
               个人博客
             </Link>
-            <Link href="#tools" className="hover:text-white">
+            <Link href="/tools" className="hover:text-white">
               AI 工具
             </Link>
-            <Link href="#contact" className="hover:text-white">
+            <Link href="/about" className="hover:text-white">
               关于/联系
+            </Link>
+            <Link href="/guestbook" className="hover:text-white">
+              留言板
             </Link>
           </nav>
           <button className="rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 hover:border-white/60">
