@@ -170,7 +170,7 @@ export default function Home() {
                 key={post.title}
                 className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-white/30"
               >
-                <span className="text-xs uppercase tracking-[0.3em] text-white/40">
+                <span className="text-xs uppercase tracking-[0.3em] text-white/70">
                   {post.tag}
                 </span>
                 <h4 className="mt-4 text-lg font-semibold">{post.title}</h4>
