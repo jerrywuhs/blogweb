@@ -30,7 +30,7 @@ export default function TechPage() {
             <h1 className="mt-4 text-3xl font-semibold">
               AI 编程 · 量化策略 · 工具实践
             </h1>
-            <p className="mt-3 text-sm text-white/70">
+            <p className="mt-3 text-sm text-white/85">
               系统化输出技术路线、实战复盘与工具拆解，保持结构化与可复用。
             </p>
           </div>
@@ -44,8 +44,8 @@ export default function TechPage() {
                   className="block rounded-2xl border border-white/10 bg-white/5 p-4"
                 >
                   <p className="text-sm font-semibold">{series.title}</p>
-                  <p className="mt-2 text-xs text-white/60">{series.summary}</p>
-                  <p className="mt-2 text-xs text-white/40">
+                  <p className="mt-2 text-xs text-white/75">{series.summary}</p>
+                  <p className="mt-2 text-xs text-white/70">
                     {series.total} 集 · 更新 {series.updatedAt}
                   </p>
                 </Link>
@@ -60,11 +60,11 @@ export default function TechPage() {
               key={post.slug}
               className="rounded-3xl border border-white/10 bg-white/5 p-6"
             >
-              <p className="text-xs uppercase tracking-[0.3em] text-white/40">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/70">
                 {post.category}
               </p>
               <h3 className="mt-3 text-lg font-semibold">{post.title}</h3>
-              <p className="mt-3 text-sm text-white/70">{post.summary}</p>
+              <p className="mt-3 text-sm text-white/85">{post.summary}</p>
               <div className="mt-4 flex flex-wrap gap-2 text-xs text-white/50">
                 {post.tags.map((tag) => (
                   <span key={tag} className="rounded-full bg-white/10 px-2 py-1">

@@ -32,8 +32,8 @@ export default async function TechSeriesDetail({ params }: PageProps) {
 
       <main className="mx-auto w-full max-w-6xl px-6 py-12">
         <h1 className="text-3xl font-semibold">{series.title}</h1>
-        <p className="mt-3 text-sm text-white/70">{series.summary}</p>
-        <p className="mt-3 text-xs text-white/50">共 {series.total} 集 · 更新 {series.updatedAt}</p>
+        <p className="mt-3 text-sm text-white/85">{series.summary}</p>
+        <p className="mt-3 text-xs text-white/70">共 {series.total} 集 · 更新 {series.updatedAt}</p>
 
         <div className="mt-8 space-y-4">
           {episodes.map((ep) => (

@@ -31,18 +31,18 @@ export default async function TechDetailPage({ params }: PageProps) {
 
       <main className="mx-auto w-full max-w-5xl px-6 py-12">
         <section className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.3em] text-white/50">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/70">
             {post.category}
           </p>
           <h1 className="text-3xl font-semibold">{post.title}</h1>
-          <p className="text-sm text-white/60">{post.date} · {post.type}</p>
+          <p className="text-sm text-white/80">{post.date} · {post.type}</p>
         </section>
 
         <section className="mt-10 grid gap-8 lg:grid-cols-[1fr_280px]">
           <article className="space-y-8">
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
               <h2 className="text-xl font-semibold">本章要点</h2>
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/70">
+              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/85">
                 <li>梳理系统架构与数据流向，搭建复用性强的策略框架。</li>
                 <li>定义指标输入输出，保证后续回测与实盘一致性。</li>
                 <li>建立风控与日志体系，便于复盘与持续优化。</li>
@@ -51,7 +51,7 @@ export default async function TechDetailPage({ params }: PageProps) {
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
               <h2 className="text-xl font-semibold">核心框架示意</h2>
-              <p className="mt-3 text-sm text-white/70">
+              <p className="mt-3 text-sm text-white/85">
                 以“数据采集 → 指标计算 → 策略决策 → 执行回测/实盘”为主链路，
                 确保每一层都有清晰的输入输出标准。
               </p>
