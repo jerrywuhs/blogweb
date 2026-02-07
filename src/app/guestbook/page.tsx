@@ -58,16 +58,22 @@ export default function GuestbookPage() {
 
           <div className="mt-6 space-y-4">
             <div>
-              <label className="text-sm text-white/70">需求与建议 *</label>
+              <label htmlFor="guestbook-content" className="text-sm text-white/70">
+                需求与建议 *
+              </label>
               <textarea
+                id="guestbook-content"
                 value={content}
                 onChange={(event) => setContent(event.target.value)}
                 className="mt-2 min-h-[160px] w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white"
               />
             </div>
             <div>
-              <label className="text-sm text-white/70">联系方式（可选）</label>
+              <label htmlFor="guestbook-contact" className="text-sm text-white/70">
+                联系方式（可选）
+              </label>
               <input
+                id="guestbook-contact"
                 value={contact}
                 onChange={(event) => setContact(event.target.value)}
                 placeholder="手机号 / 邮箱"

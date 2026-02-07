@@ -38,7 +38,12 @@ export default function TechListClient() {
     <div className="space-y-8">
       <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
         <div className="flex flex-wrap items-center gap-3 text-xs text-white/70">
+          <label className="sr-only" htmlFor="tech-category">
+            按分类筛选
+          </label>
           <select
+            id="tech-category"
+            aria-label="按分类筛选"
             className="rounded-full border border-white/20 bg-transparent px-3 py-1"
             value={category}
             onChange={(event) => setCategory(event.target.value)}
@@ -48,7 +53,12 @@ export default function TechListClient() {
               <option key={item}>{item}</option>
             ))}
           </select>
+          <label className="sr-only" htmlFor="tech-tag">
+            按标签筛选
+          </label>
           <select
+            id="tech-tag"
+            aria-label="按标签筛选"
             className="rounded-full border border-white/20 bg-transparent px-3 py-1"
             value={tag}
             onChange={(event) => setTag(event.target.value)}
@@ -58,7 +68,12 @@ export default function TechListClient() {
               <option key={item}>{item}</option>
             ))}
           </select>
+          <label className="sr-only" htmlFor="tech-type">
+            按类型筛选
+          </label>
           <select
+            id="tech-type"
+            aria-label="按类型筛选"
             className="rounded-full border border-white/20 bg-transparent px-3 py-1"
             value={type}
             onChange={(event) => setType(event.target.value)}
@@ -68,7 +83,12 @@ export default function TechListClient() {
               <option key={item}>{item}</option>
             ))}
           </select>
+          <label className="sr-only" htmlFor="tech-series">
+            按系列筛选
+          </label>
           <select
+            id="tech-series"
+            aria-label="按系列筛选"
             className="rounded-full border border-white/20 bg-transparent px-3 py-1"
             value={seriesTitle}
             onChange={(event) => setSeriesTitle(event.target.value)}

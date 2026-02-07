@@ -36,14 +36,24 @@ export default function ToolsListClient() {
   return (
     <div className="space-y-8">
       <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+        <h2 className="sr-only">工具列表</h2>
         <div className="grid gap-4 lg:grid-cols-[1fr_auto_auto_auto]">
+          <label className="sr-only" htmlFor="tools-keyword">
+            搜索工具
+          </label>
           <input
+            id="tools-keyword"
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
             placeholder="搜索工具"
             className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40"
           />
+          <label className="sr-only" htmlFor="tools-category">
+            按分类筛选
+          </label>
           <select
+            id="tools-category"
+            aria-label="按分类筛选"
             className="rounded-full border border-white/20 bg-transparent px-3 py-2 text-sm"
             value={category}
             onChange={(event) => setCategory(event.target.value)}
@@ -53,7 +63,12 @@ export default function ToolsListClient() {
               <option key={item}>{item}</option>
             ))}
           </select>
+          <label className="sr-only" htmlFor="tools-tag">
+            按标签筛选
+          </label>
           <select
+            id="tools-tag"
+            aria-label="按标签筛选"
             className="rounded-full border border-white/20 bg-transparent px-3 py-2 text-sm"
             value={tag}
             onChange={(event) => setTag(event.target.value)}
@@ -63,7 +78,12 @@ export default function ToolsListClient() {
               <option key={item}>{item}</option>
             ))}
           </select>
+          <label className="sr-only" htmlFor="tools-pricing">
+            按收费类型筛选
+          </label>
           <select
+            id="tools-pricing"
+            aria-label="按收费类型筛选"
             className="rounded-full border border-white/20 bg-transparent px-3 py-2 text-sm"
             value={price}
             onChange={(event) => setPrice(event.target.value)}
