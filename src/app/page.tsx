@@ -1,5 +1,6 @@
 import Link from "next/link";
 import RealtimeTicker from "@/components/RealtimeTicker";
+import SiteHeader from "@/components/SiteHeader";
 
 const featuredPosts = [
   {
@@ -58,41 +59,8 @@ const tags = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
-      <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-indigo-500 via-sky-500 to-emerald-400" />
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-white/50">个人品牌站</p>
-              <h1 className="text-xl font-semibold">老吴的工作站</h1>
-            </div>
-          </div>
-          <nav className="hidden items-center gap-8 text-sm text-white/70 md:flex">
-            <Link href="#home" className="hover:text-white">
-              首页
-            </Link>
-            <Link href="/tech" className="hover:text-white">
-              技术博客
-            </Link>
-            <Link href="/personal" className="hover:text-white">
-              个人博客
-            </Link>
-            <Link href="/tools" className="hover:text-white">
-              AI 工具
-            </Link>
-            <Link href="/about" className="hover:text-white">
-              关于/联系
-            </Link>
-            <Link href="/guestbook" className="hover:text-white">
-              留言板
-            </Link>
-          </nav>
-          <button className="rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 hover:border-white/60">
-            订阅更新
-          </button>
-        </div>
-      </header>
+    <div className="min-h-screen text-white">
+      <SiteHeader active="/" />
 
       <main id="home" className="mx-auto w-full max-w-6xl px-6 pb-24 pt-14">
         <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import SiteHeader from "@/components/SiteHeader";
 
 export default function GuestbookPage() {
   const [content, setContent] = useState("");
@@ -34,20 +34,8 @@ export default function GuestbookPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
-      <header className="border-b border-white/10 bg-slate-950/80 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
-          <Link href="/" className="text-lg font-semibold">
-            老吴的工作站
-          </Link>
-          <nav className="flex items-center gap-6 text-sm text-white/70">
-            <Link href="/tech">技术博客</Link>
-            <Link href="/personal">个人博客</Link>
-            <Link href="/tools">AI 工具</Link>
-            <Link href="/about">关于/联系</Link>
-          </nav>
-        </div>
-      </header>
+    <div className="min-h-screen text-white">
+      <SiteHeader active="/guestbook" />
 
       <main className="mx-auto w-full max-w-4xl px-6 py-12">
         <section className="rounded-3xl border border-white/10 bg-white/5 p-8">

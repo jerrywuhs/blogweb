@@ -1,29 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b1120;
-  --foreground: #e2e8f0;
-  --brand-primary: #34d399;
-  --brand-accent: #38bdf8;
+  --background: #0b1020;
+  --foreground: #e9eef7;
+  --brand-primary: #5eead4;
+  --brand-accent: #60a5fa;
   --surface: rgba(15, 23, 42, 0.9);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
 }
 
 body {
-  background: var(--background);
+  background: radial-gradient(circle at top, rgba(94, 234, 212, 0.12), transparent 45%),
+    radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.18), transparent 40%),
+    #0b1020;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), "Noto Sans SC", sans-serif;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Crect width='220' height='220' fill='none'/%3E%3Cpath d='M0 0H220V220H0Z' fill='none' stroke='rgba(255,255,255,0.03)'/%3E%3Cpath d='M0 55H220M0 110H220M0 165H220M55 0V220M110 0V220M165 0V220' stroke='rgba(255,255,255,0.04)' stroke-width='1'/%3E%3C/svg%3E");
+  opacity: 0.35;
+  mix-blend-mode: screen;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), "Noto Serif SC", serif;
+  letter-spacing: 0.01em;
 }
