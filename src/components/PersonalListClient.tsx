@@ -36,8 +36,8 @@ export default function PersonalListClient() {
 
   return (
     <div className="space-y-8">
-      <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-        <div className="flex flex-wrap items-center gap-3 text-xs text-white/70">
+      <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6">
+        <div className="flex flex-wrap items-center gap-3 text-xs text-muted">
           <label className="sr-only" htmlFor="personal-category">
             按分类筛选
           </label>
@@ -145,16 +145,19 @@ export default function PersonalListClient() {
         {filtered.map((post) => (
           <article
             key={post.slug}
-            className="rounded-3xl border border-white/10 bg-white/5 p-6"
+            className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6"
           >
-            <p className="text-xs uppercase tracking-[0.3em] text-white/70">
+            <p className="text-xs uppercase tracking-[0.3em] text-subtle">
               {post.category}
             </p>
             <h3 className="mt-3 text-lg font-semibold">{post.title}</h3>
-            <p className="mt-2 text-sm text-white/85">{post.summary}</p>
-            <div className="mt-4 flex flex-wrap gap-2 text-xs text-white/50">
+            <p className="mt-2 text-sm text-muted">{post.summary}</p>
+            <div className="mt-4 flex flex-wrap gap-2 text-xs text-subtle">
               {post.tags.map((item) => (
-                <span key={item} className="rounded-full bg-white/10 px-2 py-1">
+                <span
+                  key={item}
+                  className="rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-2 py-1"
+                >
                   #{item}
                 </span>
               ))}

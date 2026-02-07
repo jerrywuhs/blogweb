@@ -35,7 +35,7 @@ export default function ToolsListClient() {
 
   return (
     <div className="space-y-8">
-      <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+      <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6">
         <h2 className="sr-only">工具列表</h2>
         <div className="grid gap-4 lg:grid-cols-[1fr_auto_auto_auto]">
           <label className="sr-only" htmlFor="tools-keyword">
@@ -46,7 +46,7 @@ export default function ToolsListClient() {
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
             placeholder="搜索工具"
-            className="rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40"
+            className="rounded-2xl border border-[color:var(--border-muted)] bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40"
           />
           <label className="sr-only" htmlFor="tools-category">
             按分类筛选
@@ -100,28 +100,31 @@ export default function ToolsListClient() {
         {filtered.map((tool) => (
           <article
             key={tool.id}
-            className="rounded-3xl border border-white/10 bg-white/5 p-6"
+            className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6"
           >
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-white/70">
+                <p className="text-xs uppercase tracking-[0.3em] text-subtle">
                   {tool.category}
                 </p>
                 <h3 className="mt-3 text-lg font-semibold">{tool.name}</h3>
               </div>
-              <span className="rounded-full border border-white/20 px-3 py-1 text-xs text-white/70">
+              <span className="rounded-full border border-[color:var(--border-muted)] px-3 py-1 text-xs text-subtle">
                 {tool.apiType}
               </span>
             </div>
             <p className="mt-3 text-sm text-white/85">{tool.summary}</p>
-            <div className="mt-4 flex flex-wrap gap-2 text-xs text-white/50">
+            <div className="mt-4 flex flex-wrap gap-2 text-xs text-subtle">
               {tool.tags.map((item) => (
-                <span key={item} className="rounded-full bg-white/10 px-2 py-1">
+                <span
+                  key={item}
+                  className="rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-2 py-1"
+                >
                   #{item}
                 </span>
               ))}
             </div>
-            <div className="mt-4 text-xs text-white/60">
+            <div className="mt-4 text-xs text-subtle">
               收费：{tool.pricingType === "free" ? "免费" : `¥${tool.price}/${tool.billingUnit}`}
             </div>
             <Link

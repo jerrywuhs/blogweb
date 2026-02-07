@@ -13,9 +13,9 @@ const ratioClasses: Record<NonNullable<AdSlotProps["ratio"]>, string> = {
 export default function AdSlot({ label, ratio = "4/3", className }: AdSlotProps) {
   return (
     <div className={className}>
-      <p className="text-sm text-white/60">{label}</p>
+      <p className="text-sm text-subtle">{label}</p>
       <div
-        className={`mt-3 w-full rounded-2xl border border-dashed border-white/20 ${ratioClasses[ratio]}`}
+        className={`mt-3 w-full rounded-2xl border border-dashed border-[color:var(--border-muted)] ${ratioClasses[ratio]}`}
       />
     </div>
   );
