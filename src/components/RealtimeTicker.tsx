@@ -21,7 +21,7 @@ export default function RealtimeTicker() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur">
+    <div className="relative overflow-hidden rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-4 py-2 text-sm text-muted backdrop-blur">
       <div className="absolute left-3 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]" />
       <div className="pl-5 transition-all duration-500 ease-out">{items[index]}</div>
     </div>

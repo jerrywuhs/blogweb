@@ -14,7 +14,7 @@ export default function ToolsPage() {
       <main className="mx-auto w-full max-w-6xl px-6 py-12">
         <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-white/60">AI 工具</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-subtle">AI 工具</p>
             <h1 className="mt-4 text-3xl font-semibold">
               面向业务场景的 AI 工具集合
             </h1>
