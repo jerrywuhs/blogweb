@@ -11,7 +11,7 @@ const navItems = [
 
 export default function SiteHeader({ active }: { active?: string }) {
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-black/30 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-[color:var(--border-muted)] bg-black/30 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
         <Link href="/" className="group flex items-center gap-3">
           <span className="h-9 w-9 rounded-2xl bg-gradient-to-br from-sky-400 via-indigo-400 to-emerald-300 shadow-[0_0_24px_rgba(56,189,248,0.35)]" />
@@ -19,7 +19,7 @@ export default function SiteHeader({ active }: { active?: string }) {
             老吴的工作站
           </span>
         </Link>
-        <nav className="hidden items-center gap-6 text-sm text-white/70 md:flex">
+        <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -34,7 +34,7 @@ export default function SiteHeader({ active }: { active?: string }) {
         </nav>
         <Link
           href="/guestbook"
-          className="rounded-full border border-white/20 px-4 py-2 text-sm text-white/80 transition hover:border-white/60"
+          className="rounded-full border border-[color:var(--border-muted)] px-4 py-2 text-sm text-muted transition hover:border-[color:var(--border-strong)]"
         >
           订阅更新
         </Link>

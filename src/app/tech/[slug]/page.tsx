@@ -36,7 +36,7 @@ export default async function TechDetailPage({ params }: PageProps) {
       <SiteHeader active="/tech" />
 
       <main className="mx-auto w-full max-w-6xl px-6 pb-20 pt-12">
-        <section className="rounded-[32px] border border-white/10 bg-white/5 p-8 md:p-10">
+        <section className="rounded-[32px] border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8 md:p-10">
           <div className="flex flex-wrap items-center justify-between gap-4 text-sm text-white/60">
             <Link href="/tech" className="inline-flex items-center gap-2 text-white/70">
               ← 返回技术博客
