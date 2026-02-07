@@ -38,26 +38,26 @@ export default function GuestbookPage() {
       <SiteHeader active="/guestbook" />
 
       <main className="mx-auto w-full max-w-4xl px-6 py-12">
-        <section className="rounded-3xl border border-white/10 bg-white/5 p-8">
+        <section className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8">
           <h1 className="text-2xl font-semibold">留言板</h1>
-          <p className="mt-2 text-sm text-white/70">
+          <p className="mt-2 text-sm text-muted">
             欢迎提交需求与建议。联系方式可选，我们会在 48 小时内跟进。
           </p>
 
           <div className="mt-6 space-y-4">
             <div>
-              <label htmlFor="guestbook-content" className="text-sm text-white/70">
+              <label htmlFor="guestbook-content" className="text-sm text-muted">
                 需求与建议 *
               </label>
               <textarea
                 id="guestbook-content"
                 value={content}
                 onChange={(event) => setContent(event.target.value)}
-                className="mt-2 min-h-[160px] w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white"
+                className="mt-2 min-h-[160px] w-full rounded-2xl border border-[color:var(--border-muted)] bg-black/40 px-4 py-3 text-sm text-white"
               />
             </div>
             <div>
-              <label htmlFor="guestbook-contact" className="text-sm text-white/70">
+              <label htmlFor="guestbook-contact" className="text-sm text-muted">
                 联系方式（可选）
               </label>
               <input
@@ -65,7 +65,7 @@ export default function GuestbookPage() {
                 value={contact}
                 onChange={(event) => setContact(event.target.value)}
                 placeholder="手机号 / 邮箱"
-                className="mt-2 w-full rounded-2xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40"
+                className="mt-2 w-full rounded-2xl border border-[color:var(--border-muted)] bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40"
               />
             </div>
           </div>
@@ -88,7 +88,7 @@ export default function GuestbookPage() {
             提交留言
           </button>
 
-          <p className="mt-4 text-xs text-white/50">
+          <p className="mt-4 text-xs text-subtle">
             为保障安全，输入会进行基础清洗与敏感内容过滤。
           </p>
         </section>

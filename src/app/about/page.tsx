@@ -14,9 +14,9 @@ export default function AboutPage() {
       <main className="mx-auto w-full max-w-6xl px-6 py-12">
         <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-6">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/50">About</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-subtle">About</p>
             <h1 className="text-3xl font-semibold">关于 / 联系</h1>
-            <p className="text-sm text-white/80">
+            <p className="text-sm text-muted">
               这里记录技术实践、产品复盘与工具实验。欢迎交流 AI 工具、内容合作或项目共建。
             </p>
 
@@ -29,17 +29,17 @@ export default function AboutPage() {
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                  className="rounded-2xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-4"
                 >
-                  <p className="text-xs text-white/50">{item.label}</p>
-                  <p className="mt-2 text-sm text-white/85">{item.value}</p>
+                  <p className="text-xs text-subtle">{item.label}</p>
+                  <p className="mt-2 text-sm text-muted">{item.value}</p>
                 </div>
               ))}
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-black p-6">
-              <p className="text-xs uppercase tracking-[0.3em] text-white/50">Profile</p>
-              <ul className="mt-4 space-y-2 text-sm text-white/80">
+            <div className="rounded-3xl border border-[color:var(--border-muted)] bg-gradient-to-br from-slate-900 via-slate-950 to-black p-6">
+              <p className="text-xs uppercase tracking-[0.3em] text-subtle">Profile</p>
+              <ul className="mt-4 space-y-2 text-sm text-muted">
                 <li>· 聚焦 AI 编程、量化策略、工具产品化</li>
                 <li>· 擅长流程化拆解与多端体验设计</li>
                 <li>· 持续输出教程、复盘与工具演示</li>
@@ -49,9 +49,9 @@ export default function AboutPage() {
 
           <div className="space-y-6">
             <AboutPhotoClient />
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6">
               <h2 className="text-lg font-semibold">快速联系</h2>
-              <p className="mt-3 text-sm text-white/70">
+              <p className="mt-3 text-sm text-muted">
                 可通过留言板提交需求或建议，我们会在 48 小时内回复。
               </p>
               <Link
