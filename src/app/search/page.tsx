@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { contentIndex } from "@/data/content";
 
 interface PageProps {
@@ -69,6 +70,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
           )}
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

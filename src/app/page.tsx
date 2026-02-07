@@ -1,6 +1,7 @@
 import Link from "next/link";
 import RealtimeTicker from "@/components/RealtimeTicker";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 const featuredPosts = [
   {
@@ -245,6 +246,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

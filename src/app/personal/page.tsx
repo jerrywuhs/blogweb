@@ -2,6 +2,7 @@ import Link from "next/link";
 import AdSlot from "@/components/AdSlot";
 import PersonalListClient from "@/components/PersonalListClient";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { personalSeries } from "@/data/personal";
 
 export const metadata = {
@@ -51,6 +52,7 @@ export default function PersonalPage() {
           </div>
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

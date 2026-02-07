@@ -1,6 +1,7 @@
 import AdSlot from "@/components/AdSlot";
 import ToolsListClient from "@/components/ToolsListClient";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
   title: "AI 工具 · 老吴的工作站",
@@ -29,6 +30,7 @@ export default function ToolsPage() {
           <ToolsListClient />
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

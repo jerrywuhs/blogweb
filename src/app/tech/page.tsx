@@ -2,6 +2,7 @@ import Link from "next/link";
 import AdSlot from "@/components/AdSlot";
 import TechListClient from "@/components/TechListClient";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { techSeries } from "@/data/tech";
 
 export const metadata = {
@@ -51,6 +52,7 @@ export default function TechPage() {
           </div>
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

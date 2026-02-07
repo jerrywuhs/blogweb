@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { techSeries } from "@/data/tech";
 
 export const metadata = {
@@ -34,6 +35,7 @@ export default function TechSeriesPage() {
           ))}
         </div>
       </main>
+      <SiteFooter />
     </div>
   );
 }

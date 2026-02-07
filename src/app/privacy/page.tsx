@@ -1,4 +1,5 @@
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
   title: "隐私政策 · 老吴的工作站",
@@ -53,6 +54,7 @@ export default function PrivacyPage() {
           </div>
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

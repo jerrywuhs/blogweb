@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 export default function GuestbookPage() {
   const [content, setContent] = useState("");
@@ -93,6 +94,7 @@ export default function GuestbookPage() {
           </p>
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

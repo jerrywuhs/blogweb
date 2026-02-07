@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import AboutPhotoClient from "@/components/AboutPhotoClient";
+import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
   title: "关于 / 联系 · 老吴的工作站",
@@ -64,6 +65,7 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }

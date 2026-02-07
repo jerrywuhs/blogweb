@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { getTechSeries, techPosts, techSeries } from "@/data/tech";
 
 interface PageProps {
@@ -42,6 +43,7 @@ export default async function TechSeriesDetail({ params }: PageProps) {
           ))}
         </div>
       </main>
+      <SiteFooter />
     </div>
   );
 }

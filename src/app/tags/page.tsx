@@ -1,5 +1,6 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import { allTags } from "@/data/content";
 
 export const metadata = {
@@ -27,6 +28,7 @@ export default function TagsPage() {
           ))}
         </div>
       </main>
+      <SiteFooter />
     </div>
   );
 }
