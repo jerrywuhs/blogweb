@@ -6,16 +6,19 @@ const featuredPosts = [
     title: "FreqTrade 从 0 到 1：策略框架与实盘心法",
     summary: "一套可以直接落地的量化交易学习路线，涵盖架构、回测、风控。",
     tag: "技术博客",
+    href: "/tech/freqtrade-0-1-ep1",
   },
   {
     title: "AI 工具最小闭环：从需求到上线",
     summary: "如何把一个工具类 idea 在 7 天内变成可用产品。",
-    tag: "个人博客",
+    tag: "技术博客",
+    href: "/tech/ai-tool-loop",
   },
   {
     title: "实时数据看板的设计方法",
     summary: "适用于交易、运营、内容平台的仪表盘布局与动效策略。",
-    tag: "技术博客",
+    tag: "个人博客",
+    href: "/personal/workflow-reset-2025",
   },
 ];
 
@@ -104,12 +107,18 @@ export default function Home() {
               聚焦 AI 编程、量化策略与工具体验。所有内容均以可读性、可复用和实际落地为核心，持续输出结构化内容与实用工具。
             </p>
             <div className="flex flex-wrap gap-4">
-              <button className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900">
+              <Link
+                href="/tech"
+                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900"
+              >
                 查看最新内容
-              </button>
-              <button className="rounded-full border border-white/20 px-6 py-3 text-sm text-white/80">
+              </Link>
+              <Link
+                href="/tools"
+                className="rounded-full border border-white/20 px-6 py-3 text-sm text-white/80"
+              >
                 了解 AI 工具
-              </button>
+              </Link>
             </div>
             <RealtimeTicker />
           </div>
@@ -175,9 +184,12 @@ export default function Home() {
                 </span>
                 <h4 className="mt-4 text-lg font-semibold">{post.title}</h4>
                 <p className="mt-3 text-sm text-white/70">{post.summary}</p>
-                <button className="mt-6 text-sm font-semibold text-emerald-300">
+                <Link
+                  href={post.href}
+                  className="mt-6 inline-flex text-sm font-semibold text-emerald-300"
+                >
                   阅读详情 →
-                </button>
+                </Link>
               </article>
             ))}
           </div>
