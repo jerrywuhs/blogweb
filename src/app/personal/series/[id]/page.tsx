@@ -19,7 +19,7 @@ export default async function PersonalSeriesDetail({ params }: PageProps) {
 
   const episodes = personalPosts
     .filter((post) => post.seriesId === id)
-    .sort((a, b) => a.episode - b.episode);
+    .sort((a, b) => (a.episode ?? 0) - (b.episode ?? 0));
 
   return (
     <div className="min-h-screen text-white">
