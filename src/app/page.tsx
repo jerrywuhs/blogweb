@@ -65,13 +65,13 @@ export default function Home() {
       <main id="home" className="mx-auto w-full max-w-6xl px-6 pb-24 pt-14">
         <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.25em] text-white/70">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-4 py-2 text-xs uppercase tracking-[0.25em] text-subtle">
               AI 博客 · 工具 · 内容实验室
             </div>
             <h2 className="text-4xl font-semibold leading-tight md:text-5xl">
               一个聚合技术洞察、个人复盘与 AI 工具体验的品牌站
             </h2>
-            <p className="text-lg text-white/70">
+            <p className="text-lg text-muted">
               聚焦 AI 编程、量化策略与工具体验。所有内容均以可读性、可复用和实际落地为核心，持续输出结构化内容与实用工具。
             </p>
             <div className="flex flex-wrap gap-4">
@@ -83,7 +83,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/tools"
-                className="rounded-full border border-white/20 px-6 py-3 text-sm text-white/80"
+                className="rounded-full border border-[color:var(--border-muted)] px-6 py-3 text-sm text-muted"
               >
                 了解 AI 工具
               </Link>
@@ -91,21 +91,21 @@ export default function Home() {
             <RealtimeTicker />
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-black p-6">
-            <p className="text-xs uppercase tracking-[0.35em] text-white/40">数据看板</p>
+          <div className="rounded-3xl border border-[color:var(--border-muted)] bg-gradient-to-br from-slate-900 via-slate-950 to-black p-6">
+            <p className="text-xs uppercase tracking-[0.35em] text-subtle">数据看板</p>
             <div className="mt-6 grid grid-cols-2 gap-4">
               {stats.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                  className="rounded-2xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-4"
                 >
-                  <p className="text-xs text-white/50">{item.label}</p>
+                  <p className="text-xs text-subtle">{item.label}</p>
                   <p className="mt-2 text-2xl font-semibold">{item.value}</p>
                 </div>
               ))}
             </div>
-            <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
-              <p className="text-sm text-white/70">本周内容热度</p>
+            <div className="mt-6 rounded-2xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-4">
+              <p className="text-sm text-muted">本周内容热度</p>
               <div className="mt-4 grid grid-cols-6 items-end gap-2">
                 {[40, 60, 35, 80, 55, 70].map((value, index) => (
                   <div
@@ -119,16 +119,16 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mt-12 grid gap-4 rounded-3xl border border-white/10 bg-white/5 p-6 md:grid-cols-[1.1fr_0.9fr]">
+        <section className="mt-12 grid gap-4 rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6 md:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <p className="text-sm text-white/60">广告位 A（顶部横幅 · 6:1）</p>
-            <div className="mt-3 h-24 rounded-2xl border border-dashed border-white/20" />
+            <p className="text-sm text-subtle">广告位 A（顶部横幅 · 6:1）</p>
+            <div className="mt-3 h-24 rounded-2xl border border-dashed border-[color:var(--border-muted)]" />
           </div>
-          <div className="flex flex-wrap items-center gap-2 text-sm text-white/60">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-subtle">
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-white/10 bg-white/5 px-3 py-1"
+                className="rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-3 py-1"
               >
                 #{tag}
               </span>
@@ -139,19 +139,19 @@ export default function Home() {
         <section id="tech" className="mt-16">
           <div className="flex items-center justify-between">
             <h3 className="text-2xl font-semibold">推荐内容</h3>
-            <span className="text-sm text-white/60">最新 · 精选 · 系列</span>
+            <span className="text-sm text-subtle">最新 · 精选 · 系列</span>
           </div>
           <div className="mt-6 grid gap-6 lg:grid-cols-3">
             {featuredPosts.map((post) => (
               <article
                 key={post.title}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:border-white/30"
+                className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6 transition hover:border-[color:var(--border-strong)]"
               >
-                <span className="text-xs uppercase tracking-[0.3em] text-white/70">
+                <span className="text-xs uppercase tracking-[0.3em] text-subtle">
                   {post.tag}
                 </span>
                 <h4 className="mt-4 text-lg font-semibold">{post.title}</h4>
-                <p className="mt-3 text-sm text-white/70">{post.summary}</p>
+                <p className="mt-3 text-sm text-muted">{post.summary}</p>
                 <Link
                   href={post.href}
                   className="mt-6 inline-flex text-sm font-semibold text-emerald-300"
@@ -166,22 +166,22 @@ export default function Home() {
         <section id="tools" className="mt-16">
           <div className="flex items-center justify-between">
             <h3 className="text-2xl font-semibold">AI 工具推荐</h3>
-            <span className="text-sm text-white/60">REST · WebSocket · SSE</span>
+            <span className="text-sm text-subtle">REST · WebSocket · SSE</span>
           </div>
           <div className="mt-6 grid gap-6 lg:grid-cols-3">
             {tools.map((tool) => (
               <div
                 key={tool.name}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6"
+                className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6"
               >
                 <div className="flex items-center justify-between">
                   <h4 className="text-lg font-semibold">{tool.name}</h4>
-                  <span className="rounded-full border border-white/20 px-3 py-1 text-xs text-white/70">
+                  <span className="rounded-full border border-[color:var(--border-muted)] px-3 py-1 text-xs text-subtle">
                     {tool.type}
                   </span>
                 </div>
-                <p className="mt-3 text-sm text-white/70">{tool.desc}</p>
-                <div className="mt-6 flex items-center gap-2 text-xs text-white/50">
+                <p className="mt-3 text-sm text-muted">{tool.desc}</p>
+                <div className="mt-6 flex items-center gap-2 text-xs text-subtle">
                   <span className="rounded-full bg-emerald-500/10 px-2 py-1 text-emerald-300">
                     在线体验
                   </span>
@@ -193,9 +193,9 @@ export default function Home() {
         </section>
 
         <section id="life" className="mt-16 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6">
             <h3 className="text-xl font-semibold">个人博客 · 工作与生活复盘</h3>
-            <p className="mt-3 text-sm text-white/70">
+            <p className="mt-3 text-sm text-muted">
               分享决策复盘、工作方法论与长期思考，用结构化方式沉淀经验。
             </p>
             <div className="mt-6 space-y-4">
@@ -206,39 +206,39 @@ export default function Home() {
               ].map((title) => (
                 <div
                   key={title}
-                  className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3"
+                  className="flex items-center justify-between rounded-2xl border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-4 py-3"
                 >
-                  <span className="text-sm text-white/80">{title}</span>
-                  <span className="text-xs text-white/50">6 min read</span>
+                  <span className="text-sm text-muted">{title}</span>
+                  <span className="text-xs text-subtle">6 min read</span>
                 </div>
               ))}
             </div>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-slate-900 to-slate-950 p-6">
-            <p className="text-sm text-white/60">广告位 B（信息流插入 · 4:3）</p>
-            <div className="mt-4 h-60 rounded-2xl border border-dashed border-white/20" />
+          <div className="rounded-3xl border border-[color:var(--border-muted)] bg-gradient-to-b from-slate-900 to-slate-950 p-6">
+            <p className="text-sm text-subtle">广告位 B（信息流插入 · 4:3）</p>
+            <div className="mt-4 h-60 rounded-2xl border border-dashed border-[color:var(--border-muted)]" />
           </div>
         </section>
 
-        <section id="contact" className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-8">
+        <section id="contact" className="mt-16 rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <h3 className="text-2xl font-semibold">关于 / 联系</h3>
-              <p className="mt-3 text-sm text-white/70">
+              <p className="mt-3 text-sm text-muted">
                 如果你对 AI 工具、内容合作、项目共建有想法，欢迎联系。这里也会持续更新项目进展与个人复盘。
               </p>
-              <div className="mt-6 flex flex-wrap gap-3 text-sm text-white/70">
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+              <div className="mt-6 flex flex-wrap gap-3 text-sm text-muted">
+                <span className="rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-3 py-1">
                   邮箱：wuhs7806@gmail.com
                 </span>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1">
+                <span className="rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-3 py-1">
                   城市：中国 · 远程协作
                 </span>
               </div>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-black p-6">
-              <div className="h-48 rounded-2xl border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(129,140,248,0.35),_rgba(15,23,42,0.9))]" />
-              <p className="mt-4 text-xs text-white/50">
+            <div className="rounded-3xl border border-[color:var(--border-muted)] bg-gradient-to-br from-slate-900 via-slate-950 to-black p-6">
+              <div className="h-48 rounded-2xl border border-[color:var(--border-muted)] bg-[radial-gradient(circle_at_top,_rgba(129,140,248,0.35),_rgba(15,23,42,0.9))]" />
+              <p className="mt-4 text-xs text-subtle">
                 照片展示位（禁止右键/拖拽保存，后续实现）
               </p>
             </div>
