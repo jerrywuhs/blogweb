@@ -1,9 +1,14 @@
+import fs from "node:fs/promises";
+import path from "node:path";
 import Link from "next/link";
+import matter from "gray-matter";
 import RealtimeTicker from "@/components/RealtimeTicker";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
-const featuredPosts = [
+const CONTENT_DIR = path.join(process.cwd(), "content", "tech");
+
+const fallbackFeaturedPosts = [
   {
     title: "FreqTrade 从 0 到 1：策略框架与实盘心法",
     summary: "一套可以直接落地的量化交易学习路线，涵盖架构、回测、风控。",
@@ -23,6 +28,34 @@ const featuredPosts = [
     href: "/personal/workflow-reset-2025",
   },
 ];
+
+async function getFeaturedPosts() {
+  try {
+    const files = await fs.readdir(CONTENT_DIR);
+    const posts = [] as Array<{ title: string; summary: string; tag: string; href: string; date: string }>;
+
+    for (const file of files) {
+      if (!file.endsWith(".mdx")) continue;
+      const raw = await fs.readFile(path.join(CONTENT_DIR, file), "utf8");
+      const { data } = matter(raw);
+      if (!data?.slug || !data?.title) continue;
+      posts.push({
+        title: String(data.title),
+        summary: String(data.summary || ""),
+        tag: String(data.category || "技术博客"),
+        href: `/tech/${data.slug}`,
+        date: String(data.date || ""),
+      });
+    }
+
+    if (!posts.length) return fallbackFeaturedPosts;
+
+    posts.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+    return posts.slice(0, 3).map(({ date, ...rest }) => rest);
+  } catch {
+    return fallbackFeaturedPosts;
+  }
+}
 
 const tools = [
   {
@@ -58,7 +91,9 @@ const tags = [
   "增长实验",
 ];
 
-export default function Home() {
+export default async function Home() {
+  const featuredPosts = await getFeaturedPosts();
+
   return (
     <div className="min-h-screen text-white">
       <SiteHeader active="/" />
