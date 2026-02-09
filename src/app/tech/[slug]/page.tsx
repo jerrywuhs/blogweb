@@ -66,6 +66,39 @@ export default async function TechDetailPage({ params }: PageProps) {
     keywords: tags.join(","),
   };
 
+  const recommendedTools = [
+    {
+      name: "Notion",
+      desc: "知识库与内容管理，适合文档沉淀与团队协作。",
+      url: "https://www.notion.so/",
+    },
+    {
+      name: "Figma",
+      desc: "产品与内容视觉设计，快速出原型与图示。",
+      url: "https://www.figma.com/",
+    },
+    {
+      name: "Vercel",
+      desc: "前端部署与预览环境，适合技术博客与工具站。",
+      url: "https://vercel.com/",
+    },
+    {
+      name: "Canva",
+      desc: "轻量化封面与海报设计，适合内容配图。",
+      url: "https://www.canva.com/",
+    },
+    {
+      name: "Zapier",
+      desc: "跨工具自动化，将内容生成流程串起来。",
+      url: "https://zapier.com/",
+    },
+    {
+      name: "Make (Integromat)",
+      desc: "更复杂的流程编排与多步骤自动化。",
+      url: "https://www.make.com/",
+    },
+  ];
+
   return (
     <div className="min-h-screen text-white">
       <script
@@ -113,6 +146,32 @@ export default async function TechDetailPage({ params }: PageProps) {
             )}
 
             <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <h2 className="text-2xl font-semibold text-white">推荐工具</h2>
+                <span className="text-xs uppercase tracking-[0.3em] text-subtle">
+                  Affiliate Ready
+                </span>
+              </div>
+              <p className="mt-3 text-sm text-subtle">
+                这里可替换为你的联盟链接（目前为官方链接）。
+              </p>
+              <div className="mt-5 grid gap-3 md:grid-cols-2">
+                {recommendedTools.map((tool) => (
+                  <a
+                    key={tool.name}
+                    href={tool.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-2xl border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-4 py-4 transition hover:border-[color:var(--border-strong)]"
+                  >
+                    <div className="text-base font-semibold text-white">{tool.name}</div>
+                    <div className="mt-2 text-sm text-muted">{tool.desc}</div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8">
               <h2 className="text-2xl font-semibold text-white">相关推荐</h2>
               <div className="mt-4 space-y-3 text-base text-muted">
                 {techPosts
@@ -135,6 +194,7 @@ export default async function TechDetailPage({ params }: PageProps) {
               <h3 className="text-sm font-semibold text-muted">目录</h3>
               <ul className="mt-4 space-y-2 text-sm text-subtle">
                 <li>正文内容</li>
+                <li>推荐工具</li>
                 <li>相关推荐</li>
               </ul>
             </div>
