@@ -5,18 +5,51 @@ date: "2026-02-07"
 type: "article"
 category: "OpenClaw 使用指南"
 tags: ["OpenClaw", "多任务", "工作流"]
-summary: "通过子任务/子会话拆分复杂工作，实现并行效率。"
+summary: "理解路由与会话机制，把复杂任务拆成可并行的执行流。"
 ---
 
-## 适用场景
-- 多步骤部署
-- 批量内容生成
-- 多页面测试
+## 多任务的本质是“路由 + 会话”
+OpenClaw 的多任务能力不是靠“更强模型”，而是**Gateway 的路由与会话隔离机制**。每条消息都会进入一个 SessionKey，SessionKey 决定上下文与并发边界。
 
-## 方法
-- 明确任务边界
-- 子任务并行
-- 汇总结果
+![OpenClaw 消息 → 任务 → 回复链路](/images/openclaw-agent-workflow.png)
 
-## 结论
-多任务协作是规模化的关键。
+---
+
+## 1) Gateway 负责“选脑子”
+官方 Channel Routing 文档解释：
+- 消息根据 channel/account/peer 进行匹配
+- 命中后选择 **AgentId**（不同工作区）
+- 同一 Agent 的 DM 默认进入主会话
+
+这意味着：**你可以一个 Gateway 管多个工作区人格**（例如“运营助手”和“技术助手”）。
+
+---
+
+## 2) SessionKey 决定上下文隔离
+官方示例：
+- DM：`agent:main:main`
+- Group：`agent:main:<channel>:group:<id>`
+- 线程：加 `:thread:<threadId>`
+
+这让你可以并行处理不同群组、不同频道，而不会互相污染。
+
+---
+
+## 3) 广播组：同一消息触发多个 Agent
+Channel Routing 文档还提到 **Broadcast groups**：
+- 一个消息可同时触发多个 Agent
+- 适合“记录 + 执行”双通道
+
+例如：在群里消息进入后，一个 Agent 负责回复，一个 Agent 负责归档。
+
+---
+
+## 4) 多任务拆分的实战建议
+- 先定义任务边界：每个任务只做一件事
+- 将“高耗时任务”放入独立 SessionKey
+- 需要不同模型时使用独立 Agent
+
+---
+
+## 小结
+OpenClaw 的“多任务协作”不是 UI 按钮，而是**路由规则 + 会话隔离**的工程能力。掌握 SessionKey，你就能自然把复杂任务拆成并行流程。

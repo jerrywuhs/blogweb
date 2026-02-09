@@ -5,13 +5,65 @@ date: "2026-02-07"
 type: "article"
 category: "OpenClaw 使用指南"
 tags: ["OpenClaw", "文档", "入门"]
-summary: "如何高效阅读 OpenClaw 文档：先流程、后工具、最后扩展。"
+summary: "从快速开始到自动化与扩展，给出一条可落地的阅读顺序。"
 ---
 
-## 阅读顺序
-1. 了解整体流程与职责边界
-2. 掌握工具调用方式
-3. 再看部署与扩展
+## 为什么需要“路线图”
+OpenClaw 文档覆盖了 Gateway、路由、自动化、Webhooks、工具系统等多个模块。如果你没有顺序，很容易“看懂了一页，但不知道怎么开始”。这篇给出**最短路径**。
 
-## 结论
-路线图能帮助快速上手。
+![OpenClaw 文档阅读路线图](/images/openclaw-docs-reading-map.png)
+
+---
+
+## 1) 快速开始：先跑通闭环
+从官方 **Getting Started** 开始，目标很清晰：
+- Node 22+ + Gateway
+- 连接一个消息通道
+- 发送第一条消息
+
+**这一阶段不追求复杂功能，只要能对话即可。**
+
+---
+
+## 2) Channels & Routing：理解“消息怎么走”
+官方“Channels & Routing”页面强调：
+- **路由是确定性的**（来自哪里，回哪里）
+- DM 默认在主会话
+- 群组、频道是独立 SessionKey
+
+如果你要在多个平台上用同一个助手，**这一章是必须读的**。
+
+---
+
+## 3) Groups：群组使用的安全边界
+官方 Groups 章节说明：
+- 默认 **groupPolicy=allowlist**
+- 群组回复需要 mention
+- 群组会话不会跑心跳（heartbeat）
+
+这部分决定了你的助手能否“公共可控”。对私域群运营很关键。
+
+---
+
+## 4) Automation：Cron / Heartbeat / Webhook
+这是 OpenClaw 的差异点：不是被动聊天，而是**能定时、能被触发**。
+- Cron：精确时间
+- Heartbeat：周期巡检
+- Webhook：外部触发
+
+建议先读 **Cron vs Heartbeat**，再看 Cron Jobs 与 Webhook 细节。
+
+---
+
+## 5) Tools / Skills：最后才扩展能力
+当你能稳定运行与路由后，再去扩展技能：
+- 浏览器自动化
+- 文档解析
+- 图像处理
+
+否则很容易“堆工具但跑不通”。
+
+---
+
+## 小结
+最稳的路径是：**先闭环 → 再路由 → 再自动化 → 最后扩展工具**。这条路线能确保你每一步都有可验证的结果。

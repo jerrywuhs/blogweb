@@ -5,13 +5,52 @@ date: "2026-02-07"
 type: "article"
 category: "OpenClaw 使用指南"
 tags: ["OpenClaw", "自动化", "脚本"]
-summary: "常见任务配方：内容发布、页面测试、部署检查。"
+summary: "用 Cron、Heartbeat 和 Webhook 组合稳定的自动化工作流。"
 ---
 
-## 常见配方
-1. 内容发布：生成草稿 → 写入 → build → push
-2. 页面测试：Playwright 截图 → 可用性检查
-3. 部署检查：Vercel 状态 → DNS 验证
+## 自动化不是“更多脚本”，而是“更稳定的触发机制”
+OpenClaw 的自动化核心来自官方三件套：**Heartbeat / Cron / Webhook**。每个机制解决的问题不同，组合起来才真正可用。
 
-## 结论
-配方化能让自动化稳定运行。
+![自动化组合：Heartbeat / Cron / Webhook](/images/openclaw-automation-recipes.png)
+
+---
+
+## 1) Heartbeat：周期巡检（上下文优先）
+官方 Cron vs Heartbeat 文档强调：
+- Heartbeat 适合**批量检查**（邮箱、日历、通知）
+- 共享主会话上下文
+- 可以智能抑制（无事不发）
+
+**适合：** 日常监控、轻量巡检
+
+---
+
+## 2) Cron：精确时间（任务独立）
+官方 Cron Jobs 文档提到：
+- Cron 在 Gateway 内部运行
+- 支持 one-shot 与周期调度
+- 可选择 main session 或 isolated session
+
+**适合：** 定时报告、凌晨批处理、精准提醒
+
+---
+
+## 3) Webhook：外部事件驱动
+官方 Webhook 说明：
+- Gateway 可暴露 `/hooks`
+- 可触发 wake / agent 运行
+- 支持传递文本、指定模型、定制 sessionKey
+
+**适合：** GitHub 更新、监控报警、业务事件推送
+
+---
+
+## 实战配方（3 组可直接用）
+1. **日报提醒**：Cron 早上 7 点 → 生成简报 → 发送
+2. **异常报警**：Webhook 触发 → 立即唤醒 → 发送摘要
+3. **持续巡检**：Heartbeat 每 30 分钟 → 检查项目状态
+
+---
+
+## 小结
+想要稳定的自动化，必须明确“**何时触发、在哪里运行、如何交付**”。Heartbeat 保上下文，Cron 保时间，Webhook 保事件。三者配合才是可持续的自动化系统。
