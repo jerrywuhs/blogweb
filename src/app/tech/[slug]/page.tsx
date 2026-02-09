@@ -11,13 +11,16 @@ const CONTENT_DIR = path.join(process.cwd(), "content", "tech");
 
 async function getPostContent(slug: string) {
   const files = await fs.readdir(CONTENT_DIR);
-  const match = files.find((file) => file.endsWith(`-${slug}.mdx`) || file === `${slug}.mdx`);
-  if (!match) return null;
-
-  const fullPath = path.join(CONTENT_DIR, match);
-  const raw = await fs.readFile(fullPath, "utf8");
-  const { content, data } = matter(raw);
-  return { content, data };
+  for (const file of files) {
+    if (!file.endsWith(".mdx")) continue;
+    const fullPath = path.join(CONTENT_DIR, file);
+    const raw = await fs.readFile(fullPath, "utf8");
+    const { content, data } = matter(raw);
+    if (data?.slug === slug) {
+      return { content, data };
+    }
+  }
+  return null;
 }
 
 interface PageProps {
@@ -26,11 +29,14 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const files = await fs.readdir(CONTENT_DIR);
-  const slugsFromFiles = files
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => file.replace(/\.mdx$/, ""))
-    .map((file) => file.split("-").slice(-3).join("-") || file)
-    .map((file) => file.replace(/^.*?-/, ""));
+  const slugsFromFiles: string[] = [];
+
+  for (const file of files) {
+    if (!file.endsWith(".mdx")) continue;
+    const raw = await fs.readFile(path.join(CONTENT_DIR, file), "utf8");
+    const { data } = matter(raw);
+    if (data?.slug) slugsFromFiles.push(String(data.slug));
+  }
 
   const unique = Array.from(new Set([...slugsFromFiles, ...techPosts.map((post) => post.slug)]));
   return unique.map((slug) => ({ slug }));
