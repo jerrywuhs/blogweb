@@ -6,7 +6,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { personalSeries } from "@/data/personal";
 
 export const metadata = {
-  title: "个人博客 · 老吴的工作站",
+  title: "个人博客 · jerrywu 的博客",
 };
 
 export default function PersonalPage() {

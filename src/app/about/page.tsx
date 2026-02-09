@@ -4,7 +4,7 @@ import AboutPhotoClient from "@/components/AboutPhotoClient";
 import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
-  title: "关于 / 联系 · 老吴的工作站",
+  title: "关于 / 联系 · jerrywu 的博客",
 };
 
 export default function AboutPage() {

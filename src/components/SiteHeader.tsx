@@ -16,7 +16,7 @@ export default function SiteHeader({ active }: { active?: string }) {
         <Link href="/" className="group flex items-center gap-3">
           <span className="h-9 w-9 rounded-2xl bg-gradient-to-br from-sky-400 via-indigo-400 to-emerald-300 shadow-[0_0_24px_rgba(56,189,248,0.35)]" />
           <span className="text-lg font-semibold tracking-wide text-white">
-            老吴的工作站
+            jerrywu 的博客
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-muted md:flex">

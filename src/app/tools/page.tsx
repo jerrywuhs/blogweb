@@ -4,7 +4,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 export const metadata = {
-  title: "AI 工具 · 老吴的工作站",
+  title: "AI 工具 · jerrywu 的博客",
 };
 
 export default function ToolsPage() {

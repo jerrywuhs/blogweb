@@ -6,7 +6,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { techSeries } from "@/data/tech";
 
 export const metadata = {
-  title: "技术博客 · 老吴的工作站",
+  title: "技术博客 · jerrywu 的博客",
 };
 
 export default function TechPage() {

@@ -4,7 +4,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { allTags } from "@/data/content";
 
 export const metadata = {
-  title: "标签聚合 · 老吴的工作站",
+  title: "标签聚合 · jerrywu 的博客",
 };
 
 export default function TagsPage() {

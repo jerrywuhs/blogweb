@@ -4,7 +4,7 @@ import SiteFooter from "@/components/SiteFooter";
 import { allCategories } from "@/data/content";
 
 export const metadata = {
-  title: "分类聚合 · 老吴的工作站",
+  title: "分类聚合 · jerrywu 的博客",
 };
 
 export default function CategoriesPage() {

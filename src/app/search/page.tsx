@@ -8,7 +8,7 @@ interface PageProps {
 }
 
 export const metadata = {
-  title: "全站搜索 · 老吴的工作站",
+  title: "全站搜索 · jerrywu 的博客",
 };
 
 export default async function SearchPage({ searchParams }: PageProps) {
