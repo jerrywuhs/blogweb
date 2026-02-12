@@ -6,6 +6,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import matter from "gray-matter";
 import SiteHeader from "@/components/SiteHeader";
 import { getTechPost, techPosts } from "@/data/tech";
+import { useMDXComponents } from "@/mdx-components";
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "tech");
 
@@ -131,8 +132,11 @@ export default async function TechDetailPage({ params }: PageProps) {
         <section className="mt-10 grid gap-8 lg:grid-cols-[1fr_320px]">
           <article className="space-y-8 text-[17px] leading-relaxed text-muted">
             {mdx ? (
-              <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8 prose prose-invert max-w-none">
-                <MDXRemote source={mdx.content} />
+              <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8">
+                <MDXRemote 
+                  source={mdx.content} 
+                  components={useMDXComponents({})} 
+                />
               </div>
             ) : (
               <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8">
