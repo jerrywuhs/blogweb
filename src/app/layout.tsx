@@ -44,10 +44,30 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <head>
+        {/* Google Adsense */}
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3071169904021838"
           crossOrigin="anonymous"
+        />
+        {/* 
+          Google Analytics 4 
+          TODO: 请将 G-XXXXXXXXXX 替换为你的真实 GA4 测量 ID
+          获取地址: https://analytics.google.com/
+        */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-XXXXXXXXXX');
+            `,
+          }}
         />
       </head>
       <body className={`${bodyFont.variable} ${displayFont.variable} antialiased`}>
