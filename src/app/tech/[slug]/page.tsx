@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import matter from "gray-matter";
+import remarkGfm from "remark-gfm";
 import SiteHeader from "@/components/SiteHeader";
 import { getTechPost, techPosts } from "@/data/tech";
 import { useMDXComponents } from "@/mdx-components";
@@ -135,7 +136,12 @@ export default async function TechDetailPage({ params }: PageProps) {
               <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8">
                 <MDXRemote 
                   source={mdx.content} 
-                  components={useMDXComponents} 
+                  components={useMDXComponents}
+                  options={{
+                    mdxOptions: {
+                      remarkPlugins: [remarkGfm],
+                    },
+                  }}
                 />
               </div>
             ) : (
