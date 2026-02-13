@@ -207,17 +207,17 @@ export default async function Home() {
             {featuredPosts.map((post, index) => (
               <article
                 key={post.title}
-                className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6 transition-all hover-lift"
+                className="card-hover group rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <span className="text-xs uppercase tracking-[0.3em] text-subtle">
                   {post.tag}
                 </span>
-                <h4 className="mt-4 text-lg font-semibold">{post.title}</h4>
-                <p className="mt-3 text-sm text-muted">{post.summary}</p>
+                <h4 className="card-title mt-4 text-lg font-semibold transition-colors">{post.title}</h4>
+                <p className="mt-3 text-sm text-muted line-clamp-2">{post.summary}</p>
                 <Link
                   href={post.href}
-                  className="mt-6 inline-flex text-sm font-semibold text-emerald-300 transition-all hover:text-emerald-200"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 group-hover:gap-3 transition-all"
                 >
                   阅读详情 →
                 </Link>
@@ -239,21 +239,21 @@ export default async function Home() {
               <Link
                 key={tool.name}
                 href={tool.href}
-                className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6 transition-all hover-lift"
+                className="card-hover group rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-center justify-between">
-                  <h4 className="text-lg font-semibold">{tool.name}</h4>
+                  <h4 className="card-title text-lg font-semibold transition-colors">{tool.name}</h4>
                   <span className="rounded-full border border-[color:var(--border-muted)] px-3 py-1 text-xs text-subtle">
                     {tool.type}
                   </span>
                 </div>
-                <p className="mt-3 text-sm text-muted">{tool.desc}</p>
+                <p className="mt-3 text-sm text-muted line-clamp-2">{tool.desc}</p>
                 <div className="mt-6 flex items-center gap-2">
-                  <span className="rounded-full bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300 transition-all hover:bg-emerald-500/20">
+                  <span className="rounded-full bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300">
                     在线体验
                   </span>
-                  <span className="rounded-full bg-white/10 px-3 py-1.5 text-xs transition-all hover:bg-white/20">
+                  <span className="rounded-full bg-white/10 px-3 py-1.5 text-xs">
                     API 接入
                   </span>
                 </div>
