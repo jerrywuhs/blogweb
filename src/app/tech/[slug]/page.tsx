@@ -133,7 +133,7 @@ export default async function TechDetailPage({ params }: PageProps) {
         <section className="mt-10 grid gap-8 lg:grid-cols-[1fr_320px]">
           <article className="space-y-8 text-[17px] leading-relaxed text-muted">
             {mdx ? (
-              <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8">
+              <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6 md:p-10 max-w-4xl mx-auto">
                 <MDXRemote 
                   source={mdx.content} 
                   components={mdxComponents}

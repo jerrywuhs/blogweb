@@ -177,12 +177,12 @@ export default async function Home() {
               查看全部 →
             </Link>
           </div>
-          <div className="mt-4 flex flex-wrap gap-3">
+          <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {tags.map((tag) => (
               <Link
                 key={tag.name}
                 href={tag.href}
-                className="rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-4 py-2 text-sm text-muted transition-all hover:border-[color:var(--brand-primary)] hover:text-[color:var(--brand-primary)]"
+                className="rounded-xl border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-4 py-3 text-sm text-muted text-center transition-all hover:border-[color:var(--brand-primary)] hover:text-[color:var(--brand-primary)] hover:scale-105"
               >
                 #{tag.name}
               </Link>
