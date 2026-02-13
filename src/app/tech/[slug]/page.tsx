@@ -7,7 +7,7 @@ import matter from "gray-matter";
 import remarkGfm from "remark-gfm";
 import SiteHeader from "@/components/SiteHeader";
 import { getTechPost, techPosts } from "@/data/tech";
-import { useMDXComponents } from "@/mdx-components";
+import { mdxComponents } from "@/mdx-components";
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "tech");
 
@@ -136,7 +136,7 @@ export default async function TechDetailPage({ params }: PageProps) {
               <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8">
                 <MDXRemote 
                   source={mdx.content} 
-                  components={useMDXComponents}
+                  components={mdxComponents}
                   options={{
                     mdxOptions: {
                       remarkPlugins: [remarkGfm],
