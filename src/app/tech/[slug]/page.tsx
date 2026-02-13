@@ -135,7 +135,7 @@ export default async function TechDetailPage({ params }: PageProps) {
               <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8">
                 <MDXRemote 
                   source={mdx.content} 
-                  components={useMDXComponents({})} 
+                  components={useMDXComponents} 
                 />
               </div>
             ) : (
@@ -202,9 +202,14 @@ export default async function TechDetailPage({ params }: PageProps) {
                 <li>相关推荐</li>
               </ul>
             </div>
-            <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6">
-              <p className="text-sm text-muted">广告位 C（详情页末尾 · 4:3）</p>
-              <div className="mt-4 h-52 rounded-2xl border border-dashed border-[color:var(--border-muted)]" />
+            <div className="rounded-3xl border border-[color:var(--border-muted)] bg-gradient-to-br from-emerald-500/10 via-slate-900 to-indigo-500/10 p-6">
+              <h3 className="text-sm font-semibold text-white">关注我们</h3>
+              <p className="mt-3 text-xs text-muted">
+                获取更多AI提示词模板和教程
+              </p>
+              <div className="mt-4 text-xs text-subtle">
+                📧 wuhs7806@gmail.com
+              </div>
             </div>
           </aside>
         </section>
