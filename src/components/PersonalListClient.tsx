@@ -145,15 +145,15 @@ export default function PersonalListClient() {
         {filtered.map((post) => (
           <article
             key={post.slug}
-            className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6"
+            className="group relative rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6 transition-all hover:border-[color:var(--brand-primary)] hover:shadow-lg hover:shadow-[color:var(--brand-primary)]/10 hover:-translate-y-1"
           >
             <p className="text-xs uppercase tracking-[0.3em] text-subtle">
               {post.category}
             </p>
-            <h3 className="mt-3 text-lg font-semibold">{post.title}</h3>
-            <p className="mt-2 text-sm text-muted">{post.summary}</p>
+            <h3 className="mt-3 text-lg font-semibold group-hover:text-[color:var(--brand-primary)] transition-colors">{post.title}</h3>
+            <p className="mt-2 text-sm text-muted line-clamp-2">{post.summary}</p>
             <div className="mt-4 flex flex-wrap gap-2 text-xs text-subtle">
-              {post.tags.map((item) => (
+              {post.tags.slice(0, 3).map((item) => (
                 <span
                   key={item}
                   className="rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-2 py-1"
@@ -164,15 +164,16 @@ export default function PersonalListClient() {
             </div>
             <Link
               href={`/personal/${post.slug}`}
-              className="mt-6 inline-flex text-sm font-semibold text-emerald-300"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 group-hover:gap-3 transition-all"
             >
               阅读详情 →
             </Link>
+            
+            {/* 悬停时显示的背景光效 */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[color:var(--brand-primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
           </article>
         ))}
       </div>
-
-      <AdSlot label="广告位 B（信息流插入 · 4:3）" ratio="4/3" />
     </div>
   );
 }
