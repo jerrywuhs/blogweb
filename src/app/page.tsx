@@ -63,16 +63,19 @@ const tools = [
     name: "AI 合同分析",
     desc: "上传合同，自动提炼关键风险条款与建议。",
     type: "REST",
+    href: "/tools/contract-analysis",
   },
   {
     name: "舆情速览",
     desc: "多源信息聚合、热点趋势与关键摘要。",
     type: "WebSocket",
+    href: "/tools/public-sentiment",
   },
   {
     name: "内容结构化助手",
     desc: "将长文快速拆解成卡片/大纲/行动清单。",
     type: "SSE",
+    href: "/tools/content-structure",
   },
 ];
 
@@ -84,12 +87,18 @@ const stats = [
 ];
 
 const tags = [
-  "AI 编程",
-  "量化策略",
-  "提示词工程",
-  "工具评测",
-  "工作复盘",
-  "内容运营",
+  { name: "AI 编程", href: "/tags/ai-编程" },
+  { name: "量化策略", href: "/tags/量化策略" },
+  { name: "提示词工程", href: "/tags/提示词工程" },
+  { name: "工具评测", href: "/tags/工具评测" },
+  { name: "工作复盘", href: "/tags/工作复盘" },
+  { name: "内容运营", href: "/tags/内容运营" },
+];
+
+const personalPosts = [
+  { title: "复盘：内容型产品的增长瓶颈与突破", readTime: "6 min", href: "/personal/growth-breakthrough" },
+  { title: "AI 时代的个人工作流重新设计", readTime: "6 min", href: "/personal/ai-workflow" },
+  { title: "一年一次的系统性目标复盘", readTime: "6 min", href: "/personal/annual-review" },
 ];
 
 export default async function Home() {
@@ -100,6 +109,7 @@ export default async function Home() {
       <SiteHeader active="/" />
 
       <main id="home" className="mx-auto w-full max-w-6xl px-6 pb-24 pt-14">
+        {/* Hero Section */}
         <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-8 fade-in">
             <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-4 py-2 text-xs uppercase tracking-[0.25em] text-subtle fade-in-delay-1">
@@ -159,27 +169,39 @@ export default async function Home() {
         {/* Product Promotion Section */}
         <ProductPromotion />
 
-        <section className="mt-12 grid gap-4 rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6 md:grid-cols-[1.1fr_0.9fr]">
-          <div>
-            <p className="text-sm text-subtle">广告位 A（顶部横幅 · 6:1）</p>
-            <div className="mt-3 h-24 rounded-2xl border border-dashed border-[color:var(--border-muted)]" />
+        {/* Popular Tags - Replaced Ad Slot */}
+        <section className="mt-12 rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6">
+          <div className="flex items-center justify-between">
+            <h3 className="text-lg font-semibold">热门标签</h3>
+            <Link href="/tags" className="text-sm text-subtle hover:text-white transition">
+              查看全部 →
+            </Link>
           </div>
-          <div className="flex flex-wrap items-center gap-2 text-sm text-subtle">
+          <div className="mt-4 flex flex-wrap gap-3">
             {tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-3 py-1 transition-all hover:border-[color:var(--brand-primary)]"
+              <Link
+                key={tag.name}
+                href={tag.href}
+                className="rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-4 py-2 text-sm text-muted transition-all hover:border-[color:var(--brand-primary)] hover:text-[color:var(--brand-primary)]"
               >
-                #{tag}
-              </span>
+                #{tag.name}
+              </Link>
             ))}
           </div>
         </section>
 
+        {/* Featured Posts */}
         <section id="tech" className="mt-16">
           <div className="flex items-center justify-between">
             <h3 className="text-2xl font-semibold">推荐内容</h3>
-            <span className="text-sm text-subtle">最新 · 精选 · 系列</span>
+            <div className="flex gap-4 text-sm">
+              <Link href="/tech" className="text-subtle hover:text-white transition">
+                技术博客
+              </Link>
+              <Link href="/tech/series" className="text-subtle hover:text-white transition">
+                系列课程
+              </Link>
+            </div>
           </div>
           <div className="mt-6 grid gap-6 lg:grid-cols-3">
             {featuredPosts.map((post, index) => (
@@ -204,15 +226,19 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* AI Tools */}
         <section id="tools" className="mt-16">
           <div className="flex items-center justify-between">
-            <h3 className="text-2xl font-semibold">AI 工具推荐</h3>
-            <span className="text-sm text-subtle">REST · WebSocket · SSE</span>
+            <h3 className="text-2xl font-semibold">AI 工具</h3>
+            <Link href="/tools" className="text-sm text-subtle hover:text-white transition">
+              查看全部 →
+            </Link>
           </div>
           <div className="mt-6 grid gap-6 lg:grid-cols-3">
             {tools.map((tool, index) => (
-              <div
+              <Link
                 key={tool.name}
+                href={tool.href}
                 className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6 transition-all hover-lift"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -223,68 +249,107 @@ export default async function Home() {
                   </span>
                 </div>
                 <p className="mt-3 text-sm text-muted">{tool.desc}</p>
-                <div className="mt-6 flex items-center gap-2 text-xs text-subtle">
-                  <span className="rounded-full bg-emerald-500/10 px-2 py-1 text-emerald-300 transition-all hover:bg-emerald-500/20">
+                <div className="mt-6 flex items-center gap-2">
+                  <span className="rounded-full bg-emerald-500/10 px-3 py-1.5 text-xs text-emerald-300 transition-all hover:bg-emerald-500/20">
                     在线体验
                   </span>
-                  <span className="rounded-full bg-white/10 px-2 py-1 transition-all hover:bg-white/20">
+                  <span className="rounded-full bg-white/10 px-3 py-1.5 text-xs transition-all hover:bg-white/20">
                     API 接入
                   </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
 
+        {/* Personal Blog + About */}
         <section id="life" className="mt-16 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-6 transition-all hover-lift">
-            <h3 className="text-xl font-semibold">个人博客 · 工作与生活复盘</h3>
+            <div className="flex items-center justify-between">
+              <h3 className="text-xl font-semibold">个人博客</h3>
+              <Link href="/personal" className="text-sm text-subtle hover:text-white transition">
+                查看全部 →
+              </Link>
+            </div>
             <p className="mt-3 text-sm text-muted">
               分享决策复盘、工作方法论与长期思考，用结构化方式沉淀经验。
             </p>
             <div className="mt-6 space-y-4">
-              {[
-                "复盘：内容型产品的增长瓶颈与突破",
-                "AI 时代的个人工作流重新设计",
-                "一年一次的系统性目标复盘",
-              ].map((title, index) => (
-                <div
-                  key={title}
+              {personalPosts.map((post) => (
+                <Link
+                  key={post.title}
+                  href={post.href}
                   className="flex items-center justify-between rounded-2xl border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-4 py-3 transition-all hover:border-[color:var(--brand-primary)]"
                 >
-                  <span className="text-sm text-muted transition-all hover:text-white">{title}</span>
-                  <span className="text-xs text-subtle">6 min read</span>
-                </div>
+                  <span className="text-sm text-muted transition-all hover:text-white">{post.title}</span>
+                  <span className="text-xs text-subtle">{post.readTime}</span>
+                </Link>
               ))}
             </div>
           </div>
-          <div className="rounded-3xl border border-[color:var(--border-muted)] bg-gradient-to-b from-slate-900 to-slate-950 p-6 transition-all hover-lift">
-            <p className="text-sm text-subtle">广告位 B（信息流插入 · 4:3）</p>
-            <div className="mt-4 h-60 rounded-2xl border border-dashed border-[color:var(--border-muted)]" />
+
+          {/* About Section - Replaced Ad Slot B */}
+          <div className="rounded-3xl border border-[color:var(--border-muted)] bg-gradient-to-br from-slate-900 via-slate-950 to-black p-6 transition-all hover-lift">
+            <h3 className="text-xl font-semibold">关于我</h3>
+            <p className="mt-3 text-sm text-muted">
+              如果你对 AI 工具、内容合作、项目共建有想法，欢迎联系。
+            </p>
+            <div className="mt-6 space-y-3">
+              <div className="flex items-center gap-3 text-sm text-muted">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[color:var(--surface-2)]">
+                  📧
+                </span>
+                <a href="mailto:wuhs7806@gmail.com" className="hover:text-white transition">
+                  wuhs7806@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-muted">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[color:var(--surface-2)]">
+                  📍
+                </span>
+                <span>中国 · 远程协作</span>
+              </div>
+              <div className="flex items-center gap-3 text-sm text-muted">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[color:var(--surface-2)]">
+                  🔗
+                </span>
+                <a href="https://github.com/jerrywuhs" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">
+                  GitHub
+                </a>
+              </div>
+            </div>
+            <div className="mt-6">
+              <Link
+                href="/about"
+                className="inline-flex rounded-full border border-[color:var(--border-muted)] px-4 py-2 text-sm text-muted transition hover:border-[color:var(--brand-primary)] hover:text-[color:var(--brand-primary)]"
+              >
+                了解更多 →
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section id="contact" className="mt-16 rounded-3xl border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] p-8">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+        {/* Newsletter / Contact */}
+        <section id="contact" className="mt-16 rounded-3xl border border-[color:var(--border-muted)] bg-gradient-to-r from-emerald-500/5 via-slate-900 to-indigo-500/5 p-8">
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-center">
             <div>
-              <h3 className="text-2xl font-semibold">关于 / 联系</h3>
+              <h3 className="text-2xl font-semibold">保持联系</h3>
               <p className="mt-3 text-sm text-muted">
-                如果你对 AI 工具、内容合作、项目共建有想法，欢迎联系。这里也会持续更新项目进展与个人复盘。
+                订阅更新，获取最新文章和工具动态。也可以通过邮箱直接联系我。
               </p>
-              <div className="mt-6 flex flex-wrap gap-3 text-sm text-muted">
-                <span className="rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-3 py-1 transition-all hover:border-[color:var(--brand-primary)]">
-                  邮箱：wuhs7806@gmail.com
-                </span>
-                <span className="rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-2)] px-3 py-1 transition-all hover:border-[color:var(--brand-primary)]">
-                  城市：中国 · 远程协作
-                </span>
-              </div>
             </div>
-            <div className="rounded-3xl border border-[color:var(--border-muted)] bg-gradient-to-br from-slate-900 via-slate-950 to-black p-6 transition-all hover-lift">
-              <div className="h-48 rounded-2xl border border-[color:var(--border-muted)] bg-[radial-gradient(circle_at_top,_rgba(129,140,248,0.35),_rgba(15,23,42,0.9))]" />
-              <p className="mt-4 text-xs text-subtle">
-                照片展示位（禁止右键/拖拽保存，后续实现）
-              </p>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <input
+                type="email"
+                placeholder="输入你的邮箱"
+                className="flex-1 rounded-full border border-[color:var(--border-muted)] bg-[color:var(--surface-1)] px-4 py-3 text-sm text-white placeholder:text-muted focus:border-[color:var(--brand-primary)] focus:outline-none"
+              />
+              <Link
+                href="/guestbook"
+                className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:bg-gray-100"
+              >
+                订阅
+              </Link>
             </div>
           </div>
         </section>
