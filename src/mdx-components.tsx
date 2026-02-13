@@ -4,7 +4,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // 自定义表格样式 - 优化版
     table: ({ children, ...props }) => (
-      <div className="overflow-x-auto rounded-xl border border-[color:var(--border-muted)] my-6 shadow-lg">
+      <div className="overflow-x-auto rounded-xl border border-slate-700 my-6 shadow-lg">
         <table className="w-full min-w-[500px]" {...props}>{children}</table>
       </div>
     ),
@@ -14,34 +14,34 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </thead>
     ),
     th: ({ children }) => (
-      <th className="px-4 py-3 text-left text-sm font-semibold text-white tracking-wider border-b border-[color:var(--border-muted)]">
+      <th className="px-4 py-3 text-left text-sm font-semibold text-white tracking-wider border-b border-slate-600">
         {children}
       </th>
     ),
     tbody: ({ children }) => (
-      <tbody className="divide-y divide-[color:var(--border-muted)] bg-[color:var(--surface-1)]">
+      <tbody className="divide-y divide-slate-700 bg-slate-900/50">
         {children}
       </tbody>
     ),
     td: ({ children }) => (
-      <td className="px-4 py-3 text-sm text-muted border-r border-[color:var(--border-muted)] last:border-r-0">
+      <td className="px-4 py-3 text-sm text-slate-300 border-r border-slate-700 last:border-r-0">
         {children}
       </td>
     ),
     tr: ({ children }) => (
-      <tr className="transition hover:bg-[color:var(--surface-2)]">
+      <tr className="transition hover:bg-slate-800/50">
         {children}
       </tr>
     ),
     
     // 增强标题样式
     h1: ({ children }) => (
-      <h1 className="text-3xl font-bold text-white mt-8 mb-4 pb-2 border-b border-[color:var(--border-muted)]">
+      <h1 className="text-3xl font-bold text-white mt-8 mb-4 pb-2 border-b border-slate-700">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl font-semibold text-white mt-8 mb-4 pb-2 border-b border-[color:var(--border-muted)]">
+      <h2 className="text-2xl font-semibold text-white mt-8 mb-4 pb-2 border-b border-slate-700">
         {children}
       </h2>
     ),
@@ -58,38 +58,37 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     
     // 段落样式
     p: ({ children }) => (
-      <p className="my-4 text-muted leading-relaxed">
+      <p className="my-4 text-slate-300 leading-relaxed">
         {children}
       </p>
     ),
     
     // 列表样式
     ul: ({ children }) => (
-      <ul className="list-disc list-inside my-4 space-y-2 text-muted">
+      <ul className="list-disc list-inside my-4 space-y-2 text-slate-300">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="list-decimal list-inside my-4 space-y-2 text-muted">
+      <ol className="list-decimal list-inside my-4 space-y-2 text-slate-300">
         {children}
       </ol>
     ),
     li: ({ children }) => (
-      <li className="text-muted leading-relaxed">
+      <li className="text-slate-300 leading-relaxed">
         {children}
       </li>
     ),
     
     // 引用样式
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-emerald-500 pl-4 my-4 italic text-muted bg-emerald-500/5 py-2 rounded-r-lg">
+      <blockquote className="border-l-4 border-emerald-500 pl-4 my-4 italic text-slate-400 bg-emerald-500/5 py-2 rounded-r-lg">
         {children}
       </blockquote>
     ),
     
     // 代码样式
     code: ({ children, ...props }) => {
-      // 检测是否是行内代码（没有className且是简单内容）
       const isInline = !props.className && typeof children === 'string' && !children.includes('\n');
       if (isInline) {
         return (
@@ -105,7 +104,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     pre: ({ children }) => (
-      <pre className="bg-slate-900 p-4 rounded-xl overflow-x-auto my-4 border border-[color:var(--border-muted)] shadow-lg">
+      <pre className="bg-slate-900 p-4 rounded-xl overflow-x-auto my-4 border border-slate-700 shadow-lg">
         {children}
       </pre>
     ),
@@ -136,7 +135,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     
     // 分割线
     hr: () => (
-      <hr className="my-8 border-[color:var(--border-muted)]" />
+      <hr className="my-8 border-slate-700" />
     ),
     
     // 图片样式
@@ -144,7 +143,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <img 
         src={src} 
         alt={alt || ''} 
-        className="rounded-xl my-6 shadow-lg border border-[color:var(--border-muted)] max-w-full h-auto"
+        className="rounded-xl my-6 shadow-lg border border-slate-700 max-w-full h-auto"
       />
     ),
     
